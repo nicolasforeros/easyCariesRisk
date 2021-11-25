@@ -5,6 +5,8 @@ const FontSize = {
   TITLE: 23,
   ANSWER: 14,
   INFO: 13,
+  TOTAL: 55,
+  PERCENTAGE: 10,
 };
 
 export default FontSize;

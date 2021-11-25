@@ -6,6 +6,7 @@ const question1: IQuestion = {
     '¿La persona tiene retención de placa dental, es decir tiene alguna de éstas condiciones: mal-posición dentaria, fosas y fisuras profundas, rehabilitación protésica o aparatología ortodóntica?',
   weight: 2,
   isYes: undefined,
+  color: '#00000029',
 };
 
 const question2: IQuestion = {
@@ -14,6 +15,7 @@ const question2: IQuestion = {
     '¿Consume refrigerios con alto contenido de azúcar (dulces, gaseosas, harinas, jugos envasados)?',
   weight: 1.5,
   isYes: undefined,
+  color: '#035572',
 };
 
 const question3: IQuestion = {
@@ -22,6 +24,7 @@ const question3: IQuestion = {
     '¿Al colocar el espejo en el piso de la boca este no se separa, se queda pegado?',
   weight: 2,
   isYes: undefined,
+  color: '#707070',
 };
 
 const question4: IQuestion = {
@@ -30,6 +33,7 @@ const question4: IQuestion = {
     'Presencia de factores que afectan el cumplimiento del paciente con las indicaciones ¿Se realiza control o chequeo odontológico al menos una vez al año?',
   weight: 2,
   isYes: undefined,
+  color: '#FF8500',
 };
 
 const question5: IQuestion = {
@@ -38,6 +42,7 @@ const question5: IQuestion = {
     '¿La persona tuvo caries en los dientes temporales? o ¿Tienes caries activa?',
   weight: 75,
   isYes: undefined,
+  color: '#0090D0',
 };
 
 const question6: IQuestion = {
@@ -46,6 +51,7 @@ const question6: IQuestion = {
     '¿En el momento del examen la persona tiene abundante placa dental y/o cálculos abundantes?',
   weight: 13,
   isYes: undefined,
+  color: '#3C4E86',
 };
 
 const question7: IQuestion = {
@@ -53,6 +59,7 @@ const question7: IQuestion = {
   description: '¿La persona tiene restauraciones en resina de más de 5 años?',
   weight: 1.5,
   isYes: undefined,
+  color: '#66E2FF',
 };
 
 const question8: IQuestion = {
@@ -60,6 +67,7 @@ const question8: IQuestion = {
   description: '¿La persona tiene más de ocho dientes restaurados?',
   weight: 1,
   isYes: undefined,
+  color: '#0069A3'
 };
 
 const question9: IQuestion = {
@@ -67,6 +75,7 @@ const question9: IQuestion = {
   description: '¿La persona ha tenido o tiene peridontitis?',
   weight: 1,
   isYes: undefined,
+  color: '#FFDA00',
 };
 
 const question10: IQuestion = {
@@ -74,6 +83,7 @@ const question10: IQuestion = {
   description: '¿La persona tiene una enfermedad crónica de larga duración?',
   weight: 1,
   isYes: undefined,
+  color: '#000000',
 };
 
 export const initialQuestions = [

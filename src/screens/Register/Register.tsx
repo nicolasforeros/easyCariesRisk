@@ -1,7 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import Checkbox from 'expo-checkbox';
 import React, { useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import {
   Alert,
   Dimensions,
@@ -16,25 +16,34 @@ import ButtonPrimary from '../../common/components/ButtonPrimary/ButtonPrimary';
 import InputPrimary from '../../common/components/InputPrimary/InputPrimary';
 import SimpleLayout from '../../common/layouts/SimpleLayout';
 import { IUser } from '../../common/types/types';
+import { RootStackParamList } from '../../navigation/types';
 import { useActions } from '../../provider';
 import Color from '../../res/constants/colors';
 import Font from '../../res/constants/fonts';
 import FontSize from '../../res/constants/fontSizes';
-import Segues from '../../res/constants/segues';
 
 const emailRegex = RegExp(
   /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
 );
 
-const Register = () => {
+const Register = ({
+  navigation,
+}: NativeStackScreenProps<RootStackParamList, 'Register'>) => {
   const [isChecked, setChecked] = useState(false);
-  const navigation: any = useNavigation();
-  const {setUser} = useActions();
 
-  const handleOnRegister = () => {
-    const user:IUser = getValues();
-    setUser(user);
-    navigation.navigate(Segues.NEW_PATIENT);
+  const { setUser } = useActions();
+
+  const handleOnPressAbout = () => {
+    navigation.navigate('About');
+  };
+
+  const handleOnPressPolicies = () => {
+    navigation.navigate('PrivacyPolicies');
+  };
+  
+  const handleOnRegister: SubmitHandler<IUser> = (data) => {
+    setUser(data);
+    navigation.navigate('NewPatient');
   };
 
   const onInvalidRegister = () => {
@@ -49,7 +58,6 @@ const Register = () => {
   const {
     control,
     handleSubmit,
-    getValues,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -64,7 +72,7 @@ const Register = () => {
       <ScrollView
         style={styles.container}
         contentContainerStyle={{ flexGrow: 1 }}
-        keyboardShouldPersistTaps='handled'
+        keyboardShouldPersistTaps="handled"
       >
         <View style={styles.imageContainer}>
           <Image
@@ -76,7 +84,7 @@ const Register = () => {
           <Text style={styles.title}>Registro</Text>
           <Controller
             control={control}
-            name='email'
+            name="email"
             rules={{
               required: true,
               pattern: {
@@ -86,7 +94,7 @@ const Register = () => {
             }}
             render={({ field: { onChange, value, onBlur } }) => (
               <InputPrimary
-                placeholder='E-mail'
+                placeholder="E-mail"
                 onChangeText={onChange}
                 value={value}
                 onBlur={onBlur}
@@ -95,13 +103,13 @@ const Register = () => {
           />
           <Controller
             control={control}
-            name='fullName'
+            name="fullName"
             rules={{
               required: true,
             }}
             render={({ field: { onChange, value, onBlur } }) => (
               <InputPrimary
-                placeholder='Nombre Completo'
+                placeholder="Nombre Completo"
                 onChangeText={onChange}
                 value={value}
                 onBlur={onBlur}
@@ -110,13 +118,13 @@ const Register = () => {
           />
           <Controller
             control={control}
-            name='occupation'
+            name="occupation"
             rules={{
               required: true,
             }}
             render={({ field: { onChange, value, onBlur } }) => (
               <InputPrimary
-                placeholder='Especialidad'
+                placeholder="Especialidad"
                 onChangeText={onChange}
                 value={value}
                 onBlur={onBlur}
@@ -131,19 +139,19 @@ const Register = () => {
             />
             <Text style={styles.useTermsText}>
               Acepto los Términos y Condiciones de Uso y las{' '}
-              <Text style={styles.privacyPolicies} onPress={() => {}}>
+              <Text style={styles.privacyPolicies} onPress={handleOnPressPolicies}>
                 Políticas de Privacidad
               </Text>
             </Text>
           </View>
           <ButtonPrimary
-            text='Ingresar'
+            text="Ingresar"
             disabled={!isChecked}
             onPress={handleSubmit(handleOnRegister, onInvalidRegister)}
           />
         </View>
         <View style={styles.footer}>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={handleOnPressAbout}>
             <Text style={styles.footerText}>Acerca de</Text>
           </TouchableOpacity>
         </View>

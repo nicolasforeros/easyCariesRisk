@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -23,8 +23,11 @@ import Question8Icon from '../../res/assets/icons/question8.svg';
 import Question9Icon from '../../res/assets/icons/question9.svg';
 import Question10Icon from '../../res/assets/icons/question10.svg';
 import { initialQuestions } from '../../res/constants/questions';
+import { StateContext } from '../../provider/provider';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../navigation/types';
 
-const icons = [ 
+const icons = [
   Question1Icon,
   Question2Icon,
   Question3Icon,
@@ -35,9 +38,11 @@ const icons = [
   Question8Icon,
   Question9Icon,
   Question10Icon,
-]
+];
 
-const Test = () => {
+const Test = ({
+  navigation,
+}: NativeStackScreenProps<RootStackParamList, 'Test'>) => {
   const [questions, setQuestions] = useState(initialQuestions);
 
   const onHandleChange = (id: number, value: string) => {
@@ -46,6 +51,22 @@ const Test = () => {
 
     setQuestions(newQuestions);
   };
+
+  const hasAllQuestionsAnswer = () => {
+    for (let index = 0; index < questions.length; index++) {
+      const question = questions[index];
+
+      if (question.isYes === undefined) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  const onPressResults = () => {
+    navigation.navigate('Results', {questions} )
+  }
 
   return (
     <ImageLayout>
@@ -63,10 +84,16 @@ const Test = () => {
               />
             ))}
           </View>
-          <ButtonPrimary text='Resultados' onPress={() => {}} />
+          <ButtonPrimary
+            text='Resultados'
+            onPress={onPressResults}
+            disabled={!hasAllQuestionsAnswer()}
+          />
           <View style={styles.footer}>
             <TouchableOpacity onPress={() => {}}>
-              <Text style={styles.footerText}>Consulte aquí las referencias</Text>
+              <Text style={styles.footerText}>
+                Consulte aquí las referencias
+              </Text>
             </TouchableOpacity>
           </View>
         </View>

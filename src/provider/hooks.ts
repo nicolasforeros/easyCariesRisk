@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { SET_USER } from './types';
+import { SET_PATIENT, SET_USER } from './types';
 import { DispatchContext } from './provider';
-import { IUser } from '../common/types/types';
+import { IPatient, IUser } from '../common/types/types';
 
 export const useActions = () => {
   const dispatch = useContext(DispatchContext);
@@ -13,7 +13,15 @@ export const useActions = () => {
     });
   };
 
+  const setPatient = (patient: IPatient) => {
+    dispatch({
+      type: SET_PATIENT,
+      patient,
+    });
+  };
+
   return {
     setUser,
+    setPatient,
   };
 };

@@ -1,18 +1,24 @@
-import { useNavigation } from '@react-navigation/core';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
-import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import ImageLayout from '../../common/layouts/ImageLayout';
+import { RootStackParamList } from '../../navigation/types';
 import Color from '../../res/constants/colors';
 import Font from '../../res/constants/fonts';
 import FontSize from '../../res/constants/fontSizes';
-import Segues from '../../res/constants/segues';
 
-const NewPatient = () => {
-  
-  const navigation: any = useNavigation();
-
+const NewPatient = ({
+  navigation,
+}: NativeStackScreenProps<RootStackParamList, 'NewPatient'>) => {
   const handleOnPress = () => {
-    navigation.navigate(Segues.REGISTER_PATIENT);
+    navigation.navigate('RegisterPatient');
   };
 
   return (
@@ -59,8 +65,8 @@ const styles = StyleSheet.create({
   },
   image: {
     resizeMode: 'contain',
-    height: height*0.1,
-    width: height*0.1,
+    height: height * 0.1,
+    width: height * 0.1,
     margin: 40,
   },
 });

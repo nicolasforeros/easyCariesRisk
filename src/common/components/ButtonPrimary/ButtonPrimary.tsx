@@ -11,7 +11,7 @@ import FontSize from '../../../res/constants/fontSizes';
 
 interface IProps {
   text: string;
-  disabled: boolean;
+  disabled?: boolean;
   onPress: (event: GestureResponderEvent) => void;
 }
 

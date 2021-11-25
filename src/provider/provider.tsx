@@ -6,15 +6,7 @@ import React, {
   useReducer,
 } from 'react';
 import { IState, IActionType } from './types';
-import { IUser } from '../common/types/types';
-import { SET_USER } from './types';
 import { appReducer } from './reducer';
-
-const getInitialState = () => {
-  return {
-    user: undefined,
-  } as IState;
-};
 
 export const StateContext = createContext({} as IState);
 export const DispatchContext = createContext<Dispatch<IActionType>>(() => {});
