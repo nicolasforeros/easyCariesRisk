@@ -20,12 +20,6 @@ const { height, width } = Dimensions.get('window');
 
 const chartConfig = {
   color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-  // backgroundGradientFrom: "#1E2923",
-  // backgroundGradientFromOpacity: 0,
-  // backgroundGradientTo: "#08130D",
-  // backgroundGradientToOpacity: 0.5,
-  // strokeWidth: 3, // optional, default 3
-  // barPercentage: 0.5,
 };
 
 const Results = ({
@@ -40,7 +34,7 @@ const Results = ({
     .filter((question) => question.isYes)
     .map((question, index) => {
       return {
-        name: `Pregunta ${index+1}: ${question.name}`,
+        name: `Pregunta ${index + 1}: ${question.name}`,
         weight: question.weight,
         color: question.color,
         legendFontColor: Color.TEXT_QUESTION,
@@ -147,7 +141,7 @@ const styles = StyleSheet.create({
   answersGroup: {
     alignSelf: 'flex-start',
     marginHorizontal: 30,
-    width: '70%'
+    width: '70%',
   },
   answer: {
     flexDirection: 'row',

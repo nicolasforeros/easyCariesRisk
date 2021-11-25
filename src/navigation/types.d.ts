@@ -8,4 +8,5 @@ export type RootStackParamList = {
   RegisterPatient: undefined
   Test: undefined
   Results: {questions: IQuestion[]} | undefined
+  References: undefined
 }

@@ -23,7 +23,6 @@ import Question8Icon from '../../res/assets/icons/question8.svg';
 import Question9Icon from '../../res/assets/icons/question9.svg';
 import Question10Icon from '../../res/assets/icons/question10.svg';
 import { initialQuestions } from '../../res/constants/questions';
-import { StateContext } from '../../provider/provider';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/types';
 
@@ -65,8 +64,12 @@ const Test = ({
   };
 
   const onPressResults = () => {
-    navigation.navigate('Results', {questions} )
-  }
+    navigation.navigate('Results', { questions });
+  };
+
+  const handleOnPressReferences = () => {
+    navigation.navigate('References');
+  };
 
   return (
     <ImageLayout>
@@ -85,12 +88,12 @@ const Test = ({
             ))}
           </View>
           <ButtonPrimary
-            text='Resultados'
+            text="Resultados"
             onPress={onPressResults}
             disabled={!hasAllQuestionsAnswer()}
           />
           <View style={styles.footer}>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={handleOnPressReferences}>
               <Text style={styles.footerText}>
                 Consulte aquí las referencias
               </Text>
