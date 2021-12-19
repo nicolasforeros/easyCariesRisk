@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "easyCariesRisk",
+    "name": "Easy Caries Risk",
     "slug": "easyCariesRisk",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,13 +16,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nicolas.foreros.easyCariesRisk"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.nicolas.foreros.easyCariesRisk"
     },
     "web": {
       "favicon": "./assets/favicon.png"

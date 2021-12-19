@@ -45,8 +45,12 @@ const Test = ({
   const [questions, setQuestions] = useState(initialQuestions);
 
   const onHandleChange = (id: number, value: string) => {
-    const newQuestions = questions.slice();
-    newQuestions[id].isYes = value === 'yes';
+    const newQuestions = [...questions];
+    const answer = {
+      ...newQuestions[id],
+      isYes: value === 'yes',
+    };
+    newQuestions[id] = answer;
 
     setQuestions(newQuestions);
   };

@@ -56,7 +56,6 @@ const RegisterPatient = ({
   const {
     control,
     handleSubmit,
-    getValues,
     setValue,
     formState: { errors },
   } = useForm({
