@@ -25,6 +25,9 @@ import Question10Icon from '../../res/assets/icons/question10.svg';
 import { initialQuestions } from '../../res/constants/questions';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/types';
+import { StateContext } from '../../provider/provider';
+import { useSendData } from './useSendData';
+import { IPatient, IUser } from '../../common/types/types';
 
 const icons = [
   Question1Icon,
@@ -42,7 +45,16 @@ const icons = [
 const Test = ({
   navigation,
 }: NativeStackScreenProps<RootStackParamList, 'Test'>) => {
+  const { user, patient } = useContext(StateContext);
+
   const [questions, setQuestions] = useState(initialQuestions);
+
+  const { mutate: sendData } = useSendData({
+    app: 'caries',
+    user: user || ({} as IUser),
+    patient: patient || ({} as IPatient),
+    answers: questions,
+  });
 
   const onHandleChange = (id: number, value: string) => {
     const newQuestions = [...questions];
@@ -68,6 +80,7 @@ const Test = ({
   };
 
   const onPressResults = () => {
+    sendData();
     navigation.navigate('Results', { questions });
   };
 

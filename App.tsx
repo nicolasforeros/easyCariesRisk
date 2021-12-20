@@ -3,9 +3,12 @@ import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { IUser } from './src/common/types/types';
 import AppNavigation from './src/navigation/AppNavigation';
 import { ContextProvider } from './src/provider/provider';
+
+const queryClient = new QueryClient();
 
 export default function App() {
   const [user, setUser] = useState<IUser | undefined>(undefined);
@@ -31,9 +34,11 @@ export default function App() {
   } else {
     return (
       <>
-        <ContextProvider initialState={{user}}>
-          <AppNavigation />
-          <StatusBar />
+        <ContextProvider initialState={{ user }}>
+          <QueryClientProvider client={queryClient}>
+            <AppNavigation />
+            <StatusBar />
+          </QueryClientProvider>
         </ContextProvider>
       </>
     );
