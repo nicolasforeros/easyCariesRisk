@@ -86,7 +86,7 @@ const Register = ({
             control={control}
             name="email"
             rules={{
-              required: true,
+              required: false,
               pattern: {
                 value: emailRegex,
                 message: 'Formato de E-mail incorrecto. Ej: correo@gmail.com',
@@ -94,7 +94,7 @@ const Register = ({
             }}
             render={({ field: { onChange, value, onBlur } }) => (
               <InputPrimary
-                placeholder="E-mail"
+                placeholder="E-mail (opcional)"
                 onChangeText={onChange}
                 value={value}
                 onBlur={onBlur}

@@ -4,6 +4,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import ButtonPrimary from '../../common/components/ButtonPrimary/ButtonPrimary';
@@ -86,6 +87,10 @@ const RegisterPatient = ({
     Alert.alert('Error en el registro', errors.age?.message);
   };
 
+  const handleOnPressAbout = () => {
+    navigation.navigate('About');
+  };
+
   return (
     <ImageLayout>
       <ScrollView
@@ -128,6 +133,11 @@ const RegisterPatient = ({
             disabled={isDisabled}
           />
         </View>
+        <View style={styles.footer}>
+          <TouchableOpacity onPress={handleOnPressAbout}>
+            <Text style={styles.footerText}>Acerca de</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </ImageLayout>
   );
@@ -139,7 +149,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   content: {
-    flex: 1,
+    flex: 3,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -148,6 +158,16 @@ const styles = StyleSheet.create({
     color: Color.TEXT_PRIMARY,
     fontFamily: Font.BOLD,
     fontSize: FontSize.TITLE,
+  },
+  footer: {
+    flex: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  footerText: {
+    color: Color.SECONDARY,
+    fontFamily: Font.REGULAR,
+    textDecorationLine: 'underline',
   },
 });
 
